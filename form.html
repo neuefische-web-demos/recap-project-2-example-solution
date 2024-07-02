@@ -7,11 +7,28 @@
     <title>Quiz-App</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body class="create-page">
     <header class="header">
       <h1 class="header__title">Create a Question</h1>
     </header>
     <main>
+      <form class="form" data-js="form">
+        <label class="form__input" aria-label="question">
+          <span>Question</span>
+          <textarea name="question" rows="3" required></textarea>
+        </label>
+        <label class="form__input" aria-label="answer">
+          <span>Answer</span>
+          <textarea name="answer" rows="3" required required></textarea>
+        </label>
+        <label class="form__input" aria-label="tags">
+          <span>Tags</span>
+          <input type="text" name="tags" />
+        </label>
+        <button class="form__button" type="submit">Add Question</button>
+      </form>
+      <ul class="card-list"></ul>
+    </main>
     <nav class="navigation">
       <ul class="navigation__list">
         <li class="navigation__list-item">
@@ -53,14 +70,25 @@
         <li class="navigation__list-item navigation__list-item--active">
           <a
             class="navigation__link"
-            href="/index.html"
+            href="/form.html"
             aria-label="go to create page"
           >
-          <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M12 5l0 14" />
-            <path d="M5 12l14 0" />
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 5l0 14" />
+              <path d="M5 12l14 0" />
+            </svg>
           </a>
         </li>
         <li class="navigation__list-item">

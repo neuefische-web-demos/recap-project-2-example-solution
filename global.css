@@ -38,6 +38,7 @@ body {
   line-height: 1.5;
   font-family: var(--ff-primary);
   color: var(--black);
+  padding: 150px 24px;
 }
 
 button {
