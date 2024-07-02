@@ -8,6 +8,13 @@ function getByDataJS(dataJsTag, element) {
 
 const form = getByDataJS("form");
 const cardList = getByDataJS("card-list");
+const questionInput = getByDataJS("question-input");
+const answerInput = getByDataJS("answer-input");
+const characterCountQuestion = getByDataJS("character-count-question");
+const characterCountAnswer = getByDataJS("character-count-answer");
+
+addCounterUpdate(questionInput, characterCountQuestion);
+addCounterUpdate(answerInput, characterCountAnswer);
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -26,6 +33,20 @@ form.addEventListener("submit", (event) => {
 
   form.reset();
 });
+
+function addCounterUpdate(inputElement, displayElement) {
+  inputElement.addEventListener("input", (event) => {
+    const textLength = event.target.value.length;
+    const maxLength = inputElement.maxLength;
+    displayElement.textContent = `${textLength} / ${maxLength}`;
+
+    if (textLength >= maxLength) {
+      displayElement.classList.add("form__character-count--error");
+    } else {
+      displayElement.classList.remove("form__character-count--error");
+    }
+  });
+}
 
 function createCard(cardData) {
   const card = document.createElement("article");

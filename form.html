@@ -16,11 +16,29 @@
       <form class="form" data-js="form">
         <label class="form__input" aria-label="question">
           <span>Question</span>
-          <textarea name="question" rows="3" required></textarea>
+          <textarea
+            name="question"
+            rows="3"
+            required
+            maxlength="150"
+            data-js="question-input"
+          ></textarea>
+          <span class="form__character-count" data-js="character-count-question"
+            >0 / 150</span
+          >
         </label>
         <label class="form__input" aria-label="answer">
           <span>Answer</span>
-          <textarea name="answer" rows="3" required required></textarea>
+          <textarea
+            name="answer"
+            rows="3"
+            required
+            maxlength="150"
+            data-js="answer-input"
+          ></textarea>
+          <span class="form__character-count" data-js="character-count-answer"
+            >0 / 150</span
+          >
         </label>
         <label class="form__input" aria-label="tags">
           <span>Tags</span>

@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .form__input {
@@ -15,4 +15,13 @@
   padding: 12px 24px;
   background-color: var(--secondary);
   color: var(--primary);
+}
+
+.form__character-count {
+  align-self: end;
+  color: #3f4143;
+}
+
+.form__character-count--error {
+  color: rgb(233, 2, 52);
 }
