@@ -1,17 +1,17 @@
-function getByDataJS(dataJsTag, element) {
-  if (element === undefined) {
-    return document.querySelector(`[data-js='${dataJsTag}']`);
-  }
-
-  return element.querySelector(`[data-js='${dataJsTag}']`);
+function getByDataJs(dataJsTag, element = document) {
+  // default value for element
+  return element.querySelector(`[data-js="${dataJsTag}"]`);
 }
 
-const form = getByDataJS("form");
-const cardList = getByDataJS("card-list");
-const questionInput = getByDataJS("question-input");
-const answerInput = getByDataJS("answer-input");
-const characterCountQuestion = getByDataJS("character-count-question");
-const characterCountAnswer = getByDataJS("character-count-answer");
+const form = getByDataJs("form"); // document.querySelector(`[data-js="form"]`);
+const cardList = getByDataJs("card-list");
+const questionInput = getByDataJs("question-input");
+const answerInput = getByDataJs("answer-input");
+const characterCountQuestion = getByDataJs(
+  "character-count-question",
+  document
+);
+const characterCountAnswer = getByDataJs("character-count-answer");
 
 addCounterUpdate(questionInput, characterCountQuestion);
 addCounterUpdate(answerInput, characterCountAnswer);
@@ -25,8 +25,8 @@ form.addEventListener("submit", (event) => {
   const cardListItem = document.createElement("li");
   cardListItem.className = "card-list__item";
 
-  // const newCard = createCard(data);
-  const newCard = createCardVersion2(data);
+  const newCard = createCard(data);
+  // const newCard = createCardVersion2(data);
 
   cardListItem.append(newCard);
   cardList.append(cardListItem);
@@ -48,40 +48,44 @@ function addCounterUpdate(inputElement, displayElement) {
   });
 }
 
+function createElement(tag, className, textContent) {
+  const element = document.createElement(tag);
+  element.className = className;
+  element.textContent = textContent;
+
+  return element;
+}
+
 function createCard(cardData) {
   const card = document.createElement("article");
   card.className = "card";
 
-  const question = document.createElement("h2");
-  question.className = "card__question";
-  question.textContent = cardData.question;
+  const question = createElement("h2", "card__question", cardData.question);
   card.append(question);
 
-  const answerButton = document.createElement("button");
-  answerButton.className = "card__button-answer";
-  answerButton.textContent = "Show Answer";
+  const answerButton = createElement(
+    "button",
+    "card__button-answer",
+    "Show Answer"
+  );
   card.append(answerButton);
 
-  const answer = document.createElement("p");
-  answer.className = "card__answer";
-  answer.textContent = cardData.answer;
+  const answer = createElement("p", "card__answer", cardData.answer);
   card.append(answer);
 
-  const tagList = document.createElement("ul");
-  tagList.className = "card__tag-list";
+  const tagList = createElement("ul", "card__tag-list");
   card.append(tagList);
 
-  const tag = document.createElement("li");
-  tag.className = "card__tag-list-item";
-  tag.textContent = `#${cardData.tags}`;
+  const tag = createElement("li", "card__tag-list-item", `#${cardData.tags}`);
   tagList.append(tag);
 
-  const bookmark = document.createElement("div");
-  bookmark.className = "card__button-bookmark";
+  const bookmark = createElement("div", "card__button-bookmark");
   card.append(bookmark);
 
-  const bookmarkButton = document.createElement("button");
-  bookmarkButton.className = "bookmark";
+  const headline = createElement("h1", "title", "Hello World");
+  console.log(headline);
+
+  const bookmarkButton = createElement("button", "bookmark");
   bookmarkButton.setAttribute("aria-label", "bookmark");
   bookmarkButton.innerHTML = `
   <svg
